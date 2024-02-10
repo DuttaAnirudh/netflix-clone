@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="/src/assets/favicon.ico"
+      type="image/x-icon"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/sass/_main.scss" />
+    <script type="module" defer src="src/js/script.js"></script>
+    <title>Netflix Clone</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <a href="./index.html">
+        <img src="/src/assets/logo.svg" alt="Netflix Logo" class="logo" />
+      </a>
+
+      <div class="search__box">
+        <div class="search__wrapper">
+          <input
+            type="text"
+            class="search__field"
+            name="search"
+            placeholder="Search any movies..."
+            aria-label="search movies"
+          />
+
+          <img src="/src/assets/search.png" alt="search" class="search__icon" />
+        </div>
+
+        <button class="search__btn">
+          <img
+            src="/src/assets/close.png"
+            alt="close search box"
+            class="search__icon"
+          />
+        </button>
+      </div>
+
+      <div class="search__btn">
+        <img
+          src="/src/assets/menu-close.png"
+          alt="open menu"
+          class="search__icon"
+        />
+      </div>
+
+      <button class="search__btn">
+        <img src="/src/assets/menu.png" alt="open menu" class="search__icon" />
+      </button>
+    </header>
+  </body>
+</html>

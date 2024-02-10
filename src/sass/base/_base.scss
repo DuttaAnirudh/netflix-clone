@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-primary: hsla(349, 100%, 43%, 1); // --primary
+  --clr-primary-light: hsla(349, 69%, 51%, 1); // --primary-variant
+  --clr-secondary: hsla(44, 100%, 49%, 1); // --rating-color
+
+  --clr-gray-dark-1: hsla(220, 17%, 7%, 1); //   --background
+  --clr-gray-dark-2: hsla(250, 6%, 20%, 1); // --banner-background
+  --clr-gray-dark-3: hsla(250, 13%, 11%, 1); // --surface
+
+  --clr-gray-light-1: hsla(220, 100%, 95%, 1); // --on-background
+  --clr-gray-light-2: hsla(250, 100%, 95%, 1);
+  --clr-gray-light-3: hsla(250, 1%, 44%, 1); // --on-surface-variant
+  --clr-gray-light-4: hsla(250, 2%, 59%, 1); // --text-color
+
+  --clr-white: hsla(0, 0%, 100%, 1);
+  --clr-white-transparent: hsla(0, 0%, 100%, 0.2); // --white-alpha-20
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+input,
+button {
+  background-color: none;
+  border: none;
+  font-style: inherit;
+  color: inherit;
+}
+
+input {
+  width: 100%;
+}
+
+:focus-visible {
+  outline-color: var(--clr-primary-light);
+}
+
+::-webkit-scrollbar {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--clr-gray-dark-2);
+  border-radius: 0.8rem;
+}
+
+body {
+  background-color: var(--clr-gray-dark-1);
+}

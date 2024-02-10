@@ -1,0 +1,14 @@
+// Overlay
+$banner-overlay: 90deg, hsl(220, 17%, 7%) 0%, hsla(220, 17%, 7%, 0.5) 100%;
+$bottom-overlay: 180deg, hsla(250, 13%, 11%, 0), hsla(250, 13%, 11%, 1);
+
+// Font Style
+$ff-dm-sans: 'DM Sans', sans-serif;
+
+// Shadows
+$shadow-1: 0 0.1rem 0.4rem hsla(0, 0%, 0%, 0.75);
+$shadow-2: 0 0.2rem 0.4rem hsla(350, 100%, 43%, 0.3);
+
+// Transitions
+$transition-short: 250ms ease;
+$transition-long: 500ms ease;

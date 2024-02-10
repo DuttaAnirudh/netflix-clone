@@ -1,0 +1,20 @@
+{
+  "name": "netflix-clone",
+  "version": "1.0.0",
+  "description": "Netflix Clone",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "Anirudh Dutta",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.10.0",
+    "parcel": "^2.10.0",
+    "sass": "^1.70.0"
+  },
+  "dependencies": {
+    "core-js": "^3.33.1",
+    "regenerator-runtime": "^0.14.0"
+  }
+}
