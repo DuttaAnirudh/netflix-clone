@@ -1,0 +1,24 @@
+.sidebar {
+  flex: 0 0 11%;
+  &__box {
+    padding-bottom: 2.5rem;
+  }
+
+  &__list {
+  }
+
+  &__item:not(:last-child) {
+    padding-bottom: 0.8rem;
+  }
+
+  &__link:link,
+  &__link:visited {
+    font-size: 1.6rem;
+    transition: all $transition-short;
+  }
+
+  &__link:hover,
+  &__link:active {
+    color: var(--clr-gray-light-2);
+  }
+}

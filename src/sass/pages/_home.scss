@@ -1,0 +1,33 @@
+.content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.main {
+  flex: 1;
+}
+
+.section-hero {
+  background-image: linear-gradient($banner-overlay),
+    url(/src/assets/slider-banner.jpg);
+  object-fit: cover;
+  background-position: center;
+  border-radius: 2rem;
+  padding: 9rem 2rem;
+}
+
+.section-slider {
+  max-width: 85vw;
+  overflow: scroll;
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 2rem;
+  max-width: 150rem;
+  overflow: auto;
+}

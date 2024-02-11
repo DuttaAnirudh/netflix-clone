@@ -44,7 +44,7 @@ li {
 
 input,
 button {
-  background-color: none;
+  background-color: transparent;
   border: none;
   font-style: inherit;
   color: inherit;
@@ -70,4 +70,10 @@ input {
 
 body {
   background-color: var(--clr-gray-dark-1);
+  padding: 5rem 2rem;
+}
+
+.container {
+  max-width: 180rem;
+  margin: 0 auto;
 }

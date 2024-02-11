@@ -19,45 +19,270 @@
     <title>Netflix Clone</title>
   </head>
   <body>
-    <!-- HEADER -->
-    <header class="header">
-      <a href="./index.html">
-        <img src="/src/assets/logo.svg" alt="Netflix Logo" class="logo" />
-      </a>
+    <div class="container">
+      <!-- HEADER -->
+      <header class="header mb-4">
+        <a href="./index.html">
+          <img src="/src/assets/logo.svg" alt="Netflix Logo" class="logo" />
+        </a>
 
-      <div class="search__box">
-        <div class="search__wrapper">
-          <input
-            type="text"
-            class="search__field"
-            name="search"
-            placeholder="Search any movies..."
-            aria-label="search movies"
-          />
+        <div class="search__box">
+          <div class="search__wrapper">
+            <input
+              type="text"
+              class="search__field"
+              name="search"
+              placeholder="Search any movies..."
+              aria-label="search movies"
+            />
 
-          <img src="/src/assets/search.png" alt="search" class="search__icon" />
+            <img
+              src="/src/assets/search.png"
+              alt="search"
+              class="search__icon"
+            />
+          </div>
         </div>
+      </header>
 
-        <button class="search__btn">
-          <img
-            src="/src/assets/close.png"
-            alt="close search box"
-            class="search__icon"
-          />
-        </button>
+      <div class="content">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <!-- Genre -->
+          <div class="sidebar__box">
+            <h3 class="heading-tertiary mb-2">Genre</h3>
+            <ul class="sidebar__list">
+              <li class="sidebar__item">
+                <a href="#" class="sidebar__link">Adventure</a>
+              </li>
+              <li class="sidebar__item">
+                <a href="#" class="sidebar__link">Fantasy</a>
+              </li>
+              <li class="sidebar__item">
+                <a href="#" class="sidebar__link">Animation</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Language -->
+          <div class="sidebar__box">
+            <h3 class="heading-tertiary mb-2">Language</h3>
+            <ul class="sidebar__list">
+              <li class="sidebar__item">
+                <a href="#" class="sidebar__link">English</a>
+              </li>
+              <li class="sidebar__item">
+                <a href="#" class="sidebar__link">Hindi</a>
+              </li>
+              <li class="sidebar__item">
+                <a href="#" class="sidebar__link">Spanish</a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <main class="main">
+          <section class="section-hero">
+            <div class="banner">
+              <h1 class="heading-primary">Puss in Boots: The Last Wish</h1>
+              <div class="banner__year-rating">
+                <p class="paragraph">2022</p>
+                <p class="paragraph paragraph--light">8.5</p>
+              </div>
+              <div class="paragraph">Animation, Action, Adventure</div>
+              <p class="paragraph mb-2">
+                Puss in Boots discovers that his passion for adventure has taken
+                its toll: He has burned through eight of his nine lives, leaving
+                him with only one life left. Puss sets out on an epic journey to
+                find the mythical Last Wish and restore his nine lives.
+              </p>
+              <button class="btn banner__btn">
+                <span
+                  ><img
+                    src="/src/assets/play_circle.png"
+                    alt="play button"
+                    class="banner__btn-img" /></span
+                >Watch Now
+              </button>
+            </div>
+          </section>
+
+          <section class="section-slider">
+            <!-- RECOMMEND TITLE -->
+            <h2 class="heading-secondary mb-4">Weekly Trending Movies</h2>
+            <div class="slider-row">
+              <!-- CONTAINER RECOMMENED -->
+              <div class="recommend__container">
+                <img
+                  src="/src/assets/slider-control.jpg"
+                  alt="recommend image"
+                  class="recommend__img"
+                />
+                <div class="recommend__info-box">
+                  <h3 class="heading-tertiary recommend__title">
+                    Puss in Boots: The Last Wish
+                  </h3>
+                  <div class="recommend__rating-year">
+                    <div class="recommend__rating">
+                      <img
+                        src="/src/assets/star.png"
+                        alt="star"
+                        class="recommend__rating-star"
+                      />
+                      <p class="paragraph paragraph--light">7.5</p>
+                    </div>
+                    <p class="paragraph paragraph--light">2022</p>
+                  </div>
+                </div>
+              </div>
+              <!-- CONTAINER RECOMMENED -->
+              <div class="recommend__container">
+                <img
+                  src="/src/assets/slider-control.jpg"
+                  alt="recommend image"
+                  class="recommend__img"
+                />
+                <div class="recommend__info-box">
+                  <h3 class="heading-tertiary recommend__title">
+                    Puss in Boots: The Last Wish
+                  </h3>
+                  <div class="recommend__rating-year">
+                    <div class="recommend__rating">
+                      <img
+                        src="/src/assets/star.png"
+                        alt="star"
+                        class="recommend__rating-star"
+                      />
+                      <p class="paragraph paragraph--light">7.5</p>
+                    </div>
+                    <p class="paragraph paragraph--light">2022</p>
+                  </div>
+                </div>
+              </div>
+              <!-- CONTAINER RECOMMENED -->
+              <div class="recommend__container">
+                <img
+                  src="/src/assets/slider-control.jpg"
+                  alt="recommend image"
+                  class="recommend__img"
+                />
+                <div class="recommend__info-box">
+                  <h3 class="heading-tertiary recommend__title">
+                    Puss in Boots: The Last Wish
+                  </h3>
+                  <div class="recommend__rating-year">
+                    <div class="recommend__rating">
+                      <img
+                        src="/src/assets/star.png"
+                        alt="star"
+                        class="recommend__rating-star"
+                      />
+                      <p class="paragraph paragraph--light">7.5</p>
+                    </div>
+                    <p class="paragraph paragraph--light">2022</p>
+                  </div>
+                </div>
+              </div>
+              <!-- CONTAINER RECOMMENED -->
+              <div class="recommend__container">
+                <img
+                  src="/src/assets/slider-control.jpg"
+                  alt="recommend image"
+                  class="recommend__img"
+                />
+                <div class="recommend__info-box">
+                  <h3 class="heading-tertiary recommend__title">
+                    Puss in Boots: The Last Wish
+                  </h3>
+                  <div class="recommend__rating-year">
+                    <div class="recommend__rating">
+                      <img
+                        src="/src/assets/star.png"
+                        alt="star"
+                        class="recommend__rating-star"
+                      />
+                      <p class="paragraph paragraph--light">7.5</p>
+                    </div>
+                    <p class="paragraph paragraph--light">2022</p>
+                  </div>
+                </div>
+              </div>
+              <!-- CONTAINER RECOMMENED -->
+              <div class="recommend__container">
+                <img
+                  src="/src/assets/slider-control.jpg"
+                  alt="recommend image"
+                  class="recommend__img"
+                />
+                <div class="recommend__info-box">
+                  <h3 class="heading-tertiary recommend__title">
+                    Puss in Boots: The Last Wish
+                  </h3>
+                  <div class="recommend__rating-year">
+                    <div class="recommend__rating">
+                      <img
+                        src="/src/assets/star.png"
+                        alt="star"
+                        class="recommend__rating-star"
+                      />
+                      <p class="paragraph paragraph--light">7.5</p>
+                    </div>
+                    <p class="paragraph paragraph--light">2022</p>
+                  </div>
+                </div>
+              </div>
+              <!-- CONTAINER RECOMMENED -->
+              <div class="recommend__container">
+                <img
+                  src="/src/assets/slider-control.jpg"
+                  alt="recommend image"
+                  class="recommend__img"
+                />
+                <div class="recommend__info-box">
+                  <h3 class="heading-tertiary recommend__title">
+                    Puss in Boots: The Last Wish
+                  </h3>
+                  <div class="recommend__rating-year">
+                    <div class="recommend__rating">
+                      <img
+                        src="/src/assets/star.png"
+                        alt="star"
+                        class="recommend__rating-star"
+                      />
+                      <p class="paragraph paragraph--light">7.5</p>
+                    </div>
+                    <p class="paragraph paragraph--light">2022</p>
+                  </div>
+                </div>
+              </div>
+              <!-- CONTAINER RECOMMENED -->
+              <div class="recommend__container">
+                <img
+                  src="/src/assets/slider-control.jpg"
+                  alt="recommend image"
+                  class="recommend__img"
+                />
+                <div class="recommend__info-box">
+                  <h3 class="heading-tertiary recommend__title">
+                    Puss in Boots: The Last Wish
+                  </h3>
+                  <div class="recommend__rating-year">
+                    <div class="recommend__rating">
+                      <img
+                        src="/src/assets/star.png"
+                        alt="star"
+                        class="recommend__rating-star"
+                      />
+                      <p class="paragraph paragraph--light">7.5</p>
+                    </div>
+                    <p class="paragraph paragraph--light">2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
       </div>
-
-      <div class="search__btn">
-        <img
-          src="/src/assets/menu-close.png"
-          alt="open menu"
-          class="search__icon"
-        />
-      </div>
-
-      <button class="search__btn">
-        <img src="/src/assets/menu.png" alt="open menu" class="search__icon" />
-      </button>
-    </header>
+    </div>
   </body>
 </html>

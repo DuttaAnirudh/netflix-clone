@@ -1,0 +1,18 @@
+.btn {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  background-color: var(--clr-primary);
+  padding: 1rem 2rem;
+  border-radius: 0.7rem;
+  transition: all $transition-short;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--clr-primary-light);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

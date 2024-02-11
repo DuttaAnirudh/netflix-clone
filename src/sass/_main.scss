@@ -10,7 +10,10 @@
 
 @import 'pages/home';
 
-@import 'layouts/footer';
 @import 'layouts/header';
+@import 'layouts/sidebar';
+@import 'layouts/footer';
 
 @import 'components/btn';
+@import 'components/banner';
+@import 'components/slider-container';
