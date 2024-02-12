@@ -1,0 +1,14 @@
+.section-details {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+  max-width: 85vw;
+}
+
+.trailer-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 150rem;
+  overflow: auto;
+}

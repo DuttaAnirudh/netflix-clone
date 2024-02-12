@@ -1,11 +1,13 @@
 .banner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1rem;
-  max-width: 45%;
-  margin-left: 6rem;
+  &__text-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 45%;
+    margin-left: 6rem;
+  }
 
   &__year-rating {
     display: flex;
@@ -23,5 +25,11 @@
   &__btn-img {
     height: 2rem;
     width: 2rem;
+  }
+
+  &__recommend-container {
+    min-width: 11rem;
+    filter: brightness(0.5);
+    cursor: pointer;
   }
 }

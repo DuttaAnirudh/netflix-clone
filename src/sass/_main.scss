@@ -9,11 +9,14 @@
 @import 'base/utility';
 
 @import 'pages/home';
+@import 'pages/details';
 
 @import 'layouts/header';
 @import 'layouts/sidebar';
 @import 'layouts/footer';
+@import 'layouts/grid-list';
 
 @import 'components/btn';
 @import 'components/banner';
-@import 'components/slider-container';
+@import 'components/recommend-container';
+@import 'components/details-box';
