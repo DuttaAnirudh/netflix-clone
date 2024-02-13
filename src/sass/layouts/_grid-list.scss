@@ -1,0 +1,47 @@
+.grid-list {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.grid {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 20rem;
+    cursor: pointer;
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 2rem;
+  }
+
+  &__title {
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-block: 0.8rem 0.4rem;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__rating-star {
+    width: 2rem;
+    height: 2rem;
+    transform: translateY(-2px);
+  }
+
+  &__rating-year {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

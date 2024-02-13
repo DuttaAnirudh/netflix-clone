@@ -8,6 +8,11 @@
   transition: all $transition-short;
   cursor: pointer;
 
+  &--center {
+    display: block;
+    margin: 0 auto;
+  }
+
   &:hover {
     background-color: var(--clr-primary-light);
   }

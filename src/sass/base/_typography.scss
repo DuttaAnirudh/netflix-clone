@@ -8,6 +8,10 @@ body {
 .heading-primary {
   font-size: 5.5rem;
   color: var(--clr-white);
+
+  &--bold {
+    font-weight: 700;
+  }
 }
 
 .heading-secondary {
@@ -26,5 +30,11 @@ body {
   &--light {
     font-weight: 700;
     color: var(--clr-gray-light-2);
+  }
+
+  &--red {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--clr-primary);
   }
 }
