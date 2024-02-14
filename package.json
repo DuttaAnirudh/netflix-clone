@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Netflix Clone",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "start": "parcel index.html details.html results-list.html",
+    "build": "parcel build index.html details.html results-list.html --dist-dir ./dist"
   },
   "author": "Anirudh Dutta",
   "license": "ISC",

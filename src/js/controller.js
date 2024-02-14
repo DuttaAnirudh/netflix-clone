@@ -1,4 +1,4 @@
-'use strict';
+import * as sidebar from './sidebar.js';
 
 // VARIABLES
 const searchBtn = document.querySelector('.search__icon');
@@ -26,3 +26,18 @@ sliders.forEach(slider => {
     e.preventDefault();
   });
 });
+
+const controlSidebar = async function () {
+  try {
+    await sidebar.loadGenreList();
+    sidebar.renderGenreList();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const init = function () {
+  controlSidebar();
+};
+
+init();
