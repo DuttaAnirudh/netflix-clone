@@ -1,9 +1,11 @@
-import * as sidebar from './sidebar.js';
+import * as model from './model.js';
+import * as sidebarView from './view/sidebarView.js';
+import * as bannerView from './view/bannerView.js';
 
 // VARIABLES
 const searchBtn = document.querySelector('.search__icon');
 const searchField = document.querySelector('.search__field');
-const sliders = document.querySelectorAll('#slider');
+const sliders = document.querySelectorAll('.slider-box');
 
 // EVENT LISTENERS
 // Focusing on search input field when clicking on search icon
@@ -27,17 +29,32 @@ sliders.forEach(slider => {
   });
 });
 
+///////////////////////
+// SIDEBAR
 const controlSidebar = async function () {
   try {
-    await sidebar.loadGenreList();
-    sidebar.renderGenreList();
+    await model.loadGenreList();
+    sidebarView.renderGenreList(model.state.list.genres);
   } catch (err) {
     console.error(err);
   }
 };
 
+///////////////////////
+// BANNER
+const controlBanner = async function () {
+  try {
+    await model.loadPopularMovies();
+    bannerView.renderBannerSlider(model.state.list.popularMovies);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// INITIALIZE
 const init = function () {
   controlSidebar();
+  controlBanner();
 };
 
 init();
