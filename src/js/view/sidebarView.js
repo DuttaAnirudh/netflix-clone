@@ -15,3 +15,7 @@ export const renderGenreList = async function (data) {
     throw err;
   }
 };
+
+export const addHandlerRender = function (handler) {
+  window.addEventListener('load', handler);
+};

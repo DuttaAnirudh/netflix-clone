@@ -1,6 +1,7 @@
 import * as model from './model.js';
 import * as sidebarView from './view/sidebarView.js';
-import * as bannerView from './view/bannerView.js';
+import * as bannerSliderView from './view/bannerSliderView.js';
+import * as bannerBoxView from './view/bannerBoxView.js';
 
 // VARIABLES
 const searchBtn = document.querySelector('.search__icon');
@@ -45,7 +46,33 @@ const controlSidebar = async function () {
 const controlBanner = async function () {
   try {
     await model.loadPopularMovies();
-    bannerView.renderBannerSlider(model.state.list.popularMovies);
+    await model.loadBannerMovie();
+    const bannerMovie =
+      model.state.list.bannerMovie[model.state.list.bannerMovie.length - 1];
+    bannerBoxView.bannerBoxOnLoad(bannerMovie);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const controlBannerSlider = async function () {
+  try {
+    await model.loadPopularMovies();
+    bannerSliderView.renderBannerSlider(model.state.list.popularMovies);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const controlBannerOnCLick = async function (id) {
+  try {
+    await model.bannerMovieUpdate(id);
+    const bannerMovie =
+      model.state.list.bannerMovie[model.state.list.bannerMovie.length - 1];
+    bannerBoxView.bannerBoxOnLoad(bannerMovie);
+
+    // Rendering Slider boxes with active status
+    bannerSliderView.renderBannerSlider(model.state.list.popularMovies);
   } catch (err) {
     console.error(err);
   }
@@ -53,8 +80,9 @@ const controlBanner = async function () {
 
 // INITIALIZE
 const init = function () {
-  controlSidebar();
-  controlBanner();
+  sidebarView.addHandlerRender(controlSidebar);
+  bannerBoxView.addHandlerRender(controlBanner);
+  bannerSliderView.addHandlerRender(controlBannerSlider);
+  bannerBoxView.addHandlerClick(controlBannerOnCLick);
 };
-
 init();
