@@ -4,6 +4,10 @@ const parentElement = document.getElementById('banner-text-box');
 const bannerSection = document.getElementById('section-hero');
 
 export const renderBannerBox = async function (data) {
+  if (!bannerSection) {
+    return;
+  }
+
   bannerSection.dataset.id = data.id;
   bannerSection.style.backgroundImage = `linear-gradient(90deg, hsla(210, 14%, 3%, 1) 0%, hsla(220, 17%, 7%, 0.116) 100%), url(${API_URL_BASE_IMAGE}${data.backdropImg})`;
 
@@ -35,6 +39,10 @@ export const addHandlerRender = function (handler) {
 
 export const addHandlerClick = async function (handler) {
   try {
+    if (!bannerSection) {
+      return;
+    }
+
     bannerSection.addEventListener('click', function (e) {
       const box = e.target.closest('.banner__recommend-container');
 

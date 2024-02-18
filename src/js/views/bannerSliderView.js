@@ -3,6 +3,11 @@ import { API_URL_BASE_IMAGE } from '../config.js';
 export const renderBannerSlider = async function (data) {
   try {
     const parentElement = document.getElementById('banner-row-list');
+
+    if (!parentElement) {
+      return;
+    }
+
     const markup = data
       .map(movie => {
         return `<div class="banner__recommend-container  " data-id="${movie.id}">

@@ -8,6 +8,10 @@ export const addHandlerRender = function (handler) {
 };
 
 export const renderWeeklyTrending = function (data) {
+  if (!parentElement) {
+    return;
+  }
+
   const markup = data
     .map(movie => {
       return `<div class="recommend__container" data-id="${movie.id}">
