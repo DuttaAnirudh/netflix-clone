@@ -11,8 +11,7 @@
 
 // HERO SECTION
 .section-hero {
-  background-image: linear-gradient($banner-overlay),
-    url(/src/assets/slider-banner.jpg);
+  background-image: linear-gradient($banner-overlay), var(--clr-gray-dark-1);
   background-size: cover;
   background-position: top;
   border-radius: 2rem;

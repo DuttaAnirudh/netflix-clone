@@ -1,10 +1,17 @@
-import { fetchGenreList, fetchPopularMovies } from './helpers.js';
+import {
+  fetchGenreList,
+  fetchPopularMovies,
+  fetchTrendingWeekly,
+  fetchTopRated,
+} from './helpers.js';
 
 export const state = {
   list: {
     genres: [],
     popularMovies: [],
     bannerMovie: [],
+    trendingList: [],
+    topRated: [],
   },
 };
 
@@ -25,29 +32,33 @@ export const loadGenreList = async function () {
   }
 };
 
+const createMovieObject = function (moviesArray) {
+  const arr = moviesArray.map(movie => {
+    return {
+      id: movie.id,
+      genreID: movie.genre_ids,
+      title: movie.title,
+      overview: movie.overview,
+      year: movie.release_date,
+      rating: movie.vote_average,
+      posterImg: movie.poster_path,
+      backdropImg: movie.backdrop_path,
+    };
+  });
+  return arr;
+};
+
 export const loadPopularMovies = async function () {
   try {
     const data = await fetchPopularMovies();
 
     const popularMovieList = data.results;
 
-    state.list.popularMovies = popularMovieList.map(movie => {
-      return {
-        id: movie.id,
-        genreID: movie.genre_ids,
-        title: movie.title,
-        overview: movie.overview,
-        year: movie.release_date,
-        rating: movie.vote_average,
-        posterImg: movie.poster_path,
-        backdropImg: movie.backdrop_path,
-      };
-    });
+    state.list.popularMovies = createMovieObject(popularMovieList);
 
     // Mutating GenreID array (Changing genre IDs to genre names)
     const genreMap = state.list.genres.reduce((acc, genre) => {
       acc[genre.id] = genre.genre;
-      console.log(acc);
       return acc;
     }, {});
 
@@ -77,6 +88,30 @@ export const bannerMovieUpdate = async function (id) {
     if (state.list.bannerMovie.length > 1) {
       state.list.bannerMovie.splice(0, state.list.bannerMovie.length - 1);
     }
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const loadWeeklyTrending = async function () {
+  try {
+    const data = await fetchTrendingWeekly();
+
+    const trendingList = data.results;
+
+    state.list.trendingList = createMovieObject(trendingList);
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const loadTopRated = async function () {
+  try {
+    const data = await fetchTopRated();
+
+    const topRatedList = data.results;
+
+    state.list.topRated = createMovieObject(topRatedList);
   } catch (err) {
     throw err;
   }
