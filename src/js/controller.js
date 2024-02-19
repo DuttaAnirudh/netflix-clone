@@ -129,6 +129,7 @@ const init = function () {
   weeklyTrendingView.addHandlerRender(controlTopRated);
   bannerBoxView.addHandlerClick(controlBannerOnCLick);
   weeklyTrendingView.addHandlerClick(controlURL);
+  topRatedView.addHandlerClick(controlURL);
   detailsView.addHandlerRender(controlDetails);
 };
 init();
