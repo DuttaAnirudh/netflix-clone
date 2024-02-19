@@ -7,6 +7,23 @@ export const addHandlerRender = function (handler) {
   window.addEventListener('load', handler);
 };
 
+export const addHandlerClick = function (handler) {
+  if (!parentElement) {
+    return;
+  }
+
+  parentElement.addEventListener('click', function (e) {
+    const box = e.target.closest('.recommend__container');
+
+    if (!box) {
+      return;
+    }
+
+    const movieID = box.dataset.id;
+    return handler(movieID);
+  });
+};
+
 export const renderWeeklyTrending = function (data) {
   if (!parentElement) {
     return;

@@ -11,4 +11,12 @@
   gap: 2rem;
   max-width: 150rem;
   overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    display: none;
+  }
 }

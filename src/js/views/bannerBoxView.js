@@ -37,23 +37,19 @@ export const addHandlerRender = function (handler) {
   window.addEventListener('load', handler);
 };
 
-export const addHandlerClick = async function (handler) {
-  try {
-    if (!bannerSection) {
+export const addHandlerClick = function (handler) {
+  if (!bannerSection) {
+    return;
+  }
+
+  bannerSection.addEventListener('click', function (e) {
+    const box = e.target.closest('.banner__recommend-container');
+
+    if (!box) {
       return;
     }
 
-    bannerSection.addEventListener('click', function (e) {
-      const box = e.target.closest('.banner__recommend-container');
-
-      if (!box) {
-        return;
-      }
-
-      const movieID = box.dataset.id;
-      return handler(movieID);
-    });
-  } catch (err) {
-    throw err;
-  }
+    const movieID = box.dataset.id;
+    return handler(movieID);
+  });
 };

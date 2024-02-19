@@ -4,6 +4,7 @@ import * as bannerSliderView from './views/bannerSliderView.js';
 import * as bannerBoxView from './views/bannerBoxView.js';
 import * as weeklyTrendingView from './views/weeklyTrendingView.js';
 import * as topRatedView from './views/topRatedView.js';
+import * as detailsView from './views/detailsView.js';
 
 // VARIABLES
 const searchBtn = document.querySelector('.search__icon');
@@ -98,6 +99,27 @@ const controlTopRated = async function () {
   }
 };
 
+const controlURL = async function (id) {
+  try {
+    window.location.href = `details.html?data=${id}`;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const controlDetails = async function () {
+  try {
+    // Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    // Get the value of the 'data' parameter
+    const id = urlParams.get('data');
+
+    await model.loadMovieDetails(id);
+    detailsView.renderMovieDetails(model.state.movie);
+  } catch (err) {
+    console.error(err);
+  }
+};
 // INITIALIZE
 const init = function () {
   sidebarView.addHandlerRender(controlSidebar);
@@ -106,5 +128,7 @@ const init = function () {
   weeklyTrendingView.addHandlerRender(controlWeeklyTrending);
   weeklyTrendingView.addHandlerRender(controlTopRated);
   bannerBoxView.addHandlerClick(controlBannerOnCLick);
+  weeklyTrendingView.addHandlerClick(controlURL);
+  detailsView.addHandlerRender(controlDetails);
 };
 init();

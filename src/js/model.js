@@ -3,6 +3,9 @@ import {
   fetchPopularMovies,
   fetchTrendingWeekly,
   fetchTopRated,
+  fetchMovieCast,
+  fetchMovieDetails,
+  fetchMovieVideos,
 } from './helpers.js';
 
 export const state = {
@@ -12,6 +15,13 @@ export const state = {
     bannerMovie: [],
     trendingList: [],
     topRated: [],
+  },
+
+  movie: {
+    topLevelDetails: [],
+    actors: [],
+    director: [],
+    videosKeys: [],
   },
 };
 
@@ -48,6 +58,17 @@ const createMovieObject = function (moviesArray) {
   return arr;
 };
 
+const convertGenreIDToName = function (data) {
+  const genreMap = data.genres.reduce((acc, genre) => {
+    acc[genre.id] = genre.genre;
+    return acc;
+  }, {});
+
+  data.popularMovies.forEach(movie => {
+    movie.genreID = movie.genreID.map(id => genreMap[id]);
+  });
+};
+
 export const loadPopularMovies = async function () {
   try {
     const data = await fetchPopularMovies();
@@ -57,14 +78,7 @@ export const loadPopularMovies = async function () {
     state.list.popularMovies = createMovieObject(popularMovieList);
 
     // Mutating GenreID array (Changing genre IDs to genre names)
-    const genreMap = state.list.genres.reduce((acc, genre) => {
-      acc[genre.id] = genre.genre;
-      return acc;
-    }, {});
-
-    state.list.popularMovies.forEach(movie => {
-      movie.genreID = movie.genreID.map(id => genreMap[id]);
-    });
+    convertGenreIDToName(state.list);
   } catch (err) {
     throw err;
   }
@@ -112,6 +126,61 @@ export const loadTopRated = async function () {
     const topRatedList = data.results;
 
     state.list.topRated = createMovieObject(topRatedList);
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const loadMovieDetails = async function (id) {
+  try {
+    if (!id) {
+      return;
+    }
+
+    // Fetching videos for the movie
+    const dataMovieVideo = await fetchMovieVideos(id);
+    // Fetching Movie Top level Details
+    const dataMovieDetails = await fetchMovieDetails(id);
+    // Fetching entire movie cast array
+    const dataMovieCast = await fetchMovieCast(id);
+
+    const dataTopLevel = {
+      id: dataMovieDetails.id,
+      adult: dataMovieDetails.adult,
+      genreID: dataMovieDetails.genres.map(gen => gen.name),
+      title: dataMovieDetails.title,
+      overview: dataMovieDetails.overview,
+      runtime: dataMovieDetails.runtime,
+      year: dataMovieDetails.release_date,
+      rating: dataMovieDetails.vote_average,
+      posterImg: dataMovieDetails.poster_path,
+      backdropImg: dataMovieDetails.backdrop_path,
+    };
+
+    // Filtering only the first 10 actors
+    const dataActors = dataMovieCast.cast
+      .filter(el => el.known_for_department === 'Acting')
+      .slice(0, 10)
+      .map(el => el.name);
+
+    // Filtering only the first director
+    const dataDirector = dataMovieCast.crew.filter(
+      el => el.known_for_department === 'Directing'
+    )[0];
+
+    const movieVideos = dataMovieVideo.results
+      .filter(
+        vidInfo =>
+          vidInfo.type === 'Teaser' ||
+          vidInfo.type === 'Trailer' ||
+          vidInfo.type === 'Clip'
+      )
+      .map(vidInfo => vidInfo.key);
+
+    state.movie.topLevelDetails.push(dataTopLevel);
+    state.movie.actors = dataActors;
+    state.movie.director = dataDirector.name;
+    state.movie.videosKeys = movieVideos;
   } catch (err) {
     throw err;
   }

@@ -51,3 +51,33 @@ export const fetchTopRated = async function () {
     throw err;
   }
 };
+
+export const fetchMovieCast = async function (id) {
+  try {
+    const res = await fetch(`${API_URL}/${id}/credits?api_key=${KEY}`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const fetchMovieDetails = async function (id) {
+  try {
+    const res = await fetch(`${API_URL}/${id}?api_key=${KEY}`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const fetchMovieVideos = async function (id) {
+  try {
+    const res = await fetch(`${API_URL}/${id}/videos?api_key=${KEY}`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
