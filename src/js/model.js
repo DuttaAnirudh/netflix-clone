@@ -7,6 +7,7 @@ import {
   fetchMovieDetails,
   fetchMovieVideos,
   fetchSimilarMovies,
+  fetchQueryDetails,
 } from './helpers.js';
 
 export const state = {
@@ -24,6 +25,11 @@ export const state = {
     director: [],
     videosKeys: [],
     similarMovies: [],
+  },
+
+  query: {
+    queryString: [],
+    queryResultsList: [],
   },
 };
 
@@ -195,6 +201,24 @@ export const loadMovieDetails = async function (id) {
         posterImg: movie.poster_path,
       };
     });
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const loadGenreSearchDetails = async function (query) {
+  try {
+    if (!query) {
+      return;
+    }
+
+    state.query.queryString.push(query);
+
+    const searchResultsObject = await fetchQueryDetails(query);
+
+    state.query.queryResultsList = createMovieObject(
+      searchResultsObject.results
+    );
   } catch (err) {
     throw err;
   }

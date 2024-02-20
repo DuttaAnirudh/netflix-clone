@@ -5,6 +5,7 @@ import * as bannerBoxView from './views/bannerBoxView.js';
 import * as weeklyTrendingView from './views/weeklyTrendingView.js';
 import * as topRatedView from './views/topRatedView.js';
 import * as detailsView from './views/detailsView.js';
+import * as resultsView from './views/resultsView.js';
 
 // VARIABLES
 const searchBtn = document.querySelector('.search__icon');
@@ -99,7 +100,7 @@ const controlTopRated = async function () {
   }
 };
 
-const controlURL = async function (id) {
+const controlDetailsPageURL = async function (id) {
   try {
     window.location.href = `details.html?id=${id}`;
   } catch (err) {
@@ -107,7 +108,7 @@ const controlURL = async function (id) {
   }
 };
 
-const controlDetails = async function () {
+const controlMovieDetails = async function () {
   try {
     // Get the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -116,6 +117,30 @@ const controlDetails = async function () {
 
     await model.loadMovieDetails(id);
     detailsView.renderMovieDetails(model.state.movie);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const controlGenreSearchURL = async function (query) {
+  try {
+    window.location.href = `results-list.html?genre=${query}`;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const controlGenreSearch = async function () {
+  try {
+    // Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    // Get the value of the 'data' parameter
+    const query = urlParams.get('genre');
+    console.log(query);
+
+    await model.loadGenreSearchDetails(query);
+    console.log(model.state);
+    resultsView.renderSearchResults(model.state.query);
   } catch (err) {
     console.error(err);
   }
@@ -131,11 +156,14 @@ const init = function () {
 
   bannerBoxView.addHandlerUpdateBanner(controlBannerOnCLick);
 
-  bannerBoxView.addHandlerClick(controlURL);
-  weeklyTrendingView.addHandlerClick(controlURL);
-  topRatedView.addHandlerClick(controlURL);
-  detailsView.addHandlerClick(controlURL);
+  bannerBoxView.addHandlerClick(controlDetailsPageURL);
+  weeklyTrendingView.addHandlerClick(controlDetailsPageURL);
+  topRatedView.addHandlerClick(controlDetailsPageURL);
+  detailsView.addHandlerClick(controlDetailsPageURL);
 
-  detailsView.addHandlerRender(controlDetails);
+  detailsView.addHandlerRender(controlMovieDetails);
+
+  sidebarView.addHandlerClick(controlGenreSearchURL);
+  resultsView.addHandlerRender(controlGenreSearch);
 };
 init();

@@ -4,6 +4,7 @@ import {
   API_URL_GENRE,
   API_URL_TRENDING,
   TIME_FRAME,
+  API_URL_SEARCH,
 } from './config.js';
 
 export const fetchGenreList = async function () {
@@ -85,6 +86,16 @@ export const fetchMovieVideos = async function (id) {
 export const fetchSimilarMovies = async function (id) {
   try {
     const res = await fetch(`${API_URL}/${id}/similar?api_key=${KEY}`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const fetchQueryDetails = async function (query) {
+  try {
+    const res = await fetch(`${API_URL_SEARCH}?query=${query}&api_key=${KEY}`);
     const data = await res.json();
     return data;
   } catch (err) {

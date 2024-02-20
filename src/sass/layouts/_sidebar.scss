@@ -15,10 +15,10 @@
     padding-bottom: 1.2rem;
   }
 
-  &__link:link,
-  &__link:visited {
+  &__link {
     font-size: 1.6rem;
     transition: all $transition-short;
+    cursor: pointer;
   }
 
   &__link:hover,
