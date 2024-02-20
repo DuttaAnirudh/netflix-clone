@@ -120,6 +120,7 @@ const controlDetails = async function () {
     console.error(err);
   }
 };
+
 // INITIALIZE
 const init = function () {
   sidebarView.addHandlerRender(controlSidebar);
@@ -127,9 +128,13 @@ const init = function () {
   bannerSliderView.addHandlerRender(controlBannerSlider);
   weeklyTrendingView.addHandlerRender(controlWeeklyTrending);
   weeklyTrendingView.addHandlerRender(controlTopRated);
+
   bannerBoxView.addHandlerClick(controlBannerOnCLick);
+
   weeklyTrendingView.addHandlerClick(controlURL);
   topRatedView.addHandlerClick(controlURL);
+  detailsView.addHandlerClick(controlURL);
+
   detailsView.addHandlerRender(controlDetails);
 };
 init();

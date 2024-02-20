@@ -6,6 +6,7 @@ import {
   fetchMovieCast,
   fetchMovieDetails,
   fetchMovieVideos,
+  fetchSimilarMovies,
 } from './helpers.js';
 
 export const state = {
@@ -22,6 +23,7 @@ export const state = {
     actors: [],
     director: [],
     videosKeys: [],
+    similarMovies: [],
   },
 };
 
@@ -143,6 +145,8 @@ export const loadMovieDetails = async function (id) {
     const dataMovieDetails = await fetchMovieDetails(id);
     // Fetching entire movie cast array
     const dataMovieCast = await fetchMovieCast(id);
+    // Fetching similar movies
+    const dataMovieSimilar = await fetchSimilarMovies(id);
 
     const dataTopLevel = {
       id: dataMovieDetails.id,
@@ -181,6 +185,16 @@ export const loadMovieDetails = async function (id) {
     state.movie.actors = dataActors;
     state.movie.director = dataDirector.name;
     state.movie.videosKeys = movieVideos;
+    state.movie.similarMovies = dataMovieSimilar.results.map(movie => {
+      return {
+        id: movie.id,
+        title: movie.title,
+        overview: movie.overview,
+        year: movie.release_date,
+        rating: movie.vote_average,
+        posterImg: movie.poster_path,
+      };
+    });
   } catch (err) {
     throw err;
   }

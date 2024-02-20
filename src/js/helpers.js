@@ -81,3 +81,13 @@ export const fetchMovieVideos = async function (id) {
     throw err;
   }
 };
+
+export const fetchSimilarMovies = async function (id) {
+  try {
+    const res = await fetch(`${API_URL}/${id}/similar?api_key=${KEY}`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
