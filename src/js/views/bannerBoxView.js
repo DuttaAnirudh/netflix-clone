@@ -20,7 +20,7 @@ export const renderBannerBox = async function (data) {
     <p class="paragraph mb-2">
       ${data.overview}
     </p>
-    <button class="btn banner__btn">
+    <button class="btn banner__btn" data-id="${data.id}">
       <span>
       <img
           src="${playCircle}"
@@ -37,13 +37,30 @@ export const addHandlerRender = function (handler) {
   window.addEventListener('load', handler);
 };
 
-export const addHandlerClick = function (handler) {
+export const addHandlerUpdateBanner = function (handler) {
   if (!bannerSection) {
     return;
   }
 
   bannerSection.addEventListener('click', function (e) {
     const box = e.target.closest('.banner__recommend-container');
+
+    if (!box) {
+      return;
+    }
+
+    const movieID = box.dataset.id;
+    return handler(movieID);
+  });
+};
+
+export const addHandlerClick = function (handler) {
+  if (!parentElement) {
+    return;
+  }
+
+  parentElement.addEventListener('click', function (e) {
+    const box = e.target.closest('.banner__btn');
 
     if (!box) {
       return;

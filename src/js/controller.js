@@ -101,7 +101,7 @@ const controlTopRated = async function () {
 
 const controlURL = async function (id) {
   try {
-    window.location.href = `details.html?data=${id}`;
+    window.location.href = `details.html?id=${id}`;
   } catch (err) {
     console.error(err);
   }
@@ -112,7 +112,7 @@ const controlDetails = async function () {
     // Get the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     // Get the value of the 'data' parameter
-    const id = urlParams.get('data');
+    const id = urlParams.get('id');
 
     await model.loadMovieDetails(id);
     detailsView.renderMovieDetails(model.state.movie);
@@ -129,8 +129,9 @@ const init = function () {
   weeklyTrendingView.addHandlerRender(controlWeeklyTrending);
   weeklyTrendingView.addHandlerRender(controlTopRated);
 
-  bannerBoxView.addHandlerClick(controlBannerOnCLick);
+  bannerBoxView.addHandlerUpdateBanner(controlBannerOnCLick);
 
+  bannerBoxView.addHandlerClick(controlURL);
   weeklyTrendingView.addHandlerClick(controlURL);
   topRatedView.addHandlerClick(controlURL);
   detailsView.addHandlerClick(controlURL);
