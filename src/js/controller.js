@@ -6,6 +6,7 @@ import * as weeklyTrendingView from './views/weeklyTrendingView.js';
 import * as topRatedView from './views/topRatedView.js';
 import * as detailsView from './views/detailsView.js';
 import * as resultsView from './views/resultsView.js';
+import * as searchView from './views/searchView.js';
 
 // VARIABLES
 const searchBtn = document.querySelector('.search__icon');
@@ -136,10 +137,29 @@ const controlGenreSearch = async function () {
     const urlParams = new URLSearchParams(window.location.search);
     // Get the value of the 'data' parameter
     const query = urlParams.get('genre');
-    console.log(query);
 
-    await model.loadGenreSearchDetails(query);
-    console.log(model.state);
+    await model.loadSearchDetails(query);
+    resultsView.renderSearchResults(model.state.query);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const controlKeywordSearchURL = async function (query) {
+  try {
+    window.location.href = `results-list.html?search=${query}`;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const controlKeywordSearch = async function () {
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    // Get the value of the 'data' parameter
+    const query = urlParams.get('search');
+
+    await model.loadSearchDetails(query);
     resultsView.renderSearchResults(model.state.query);
   } catch (err) {
     console.error(err);
@@ -164,6 +184,11 @@ const init = function () {
   detailsView.addHandlerRender(controlMovieDetails);
 
   sidebarView.addHandlerClick(controlGenreSearchURL);
+
   resultsView.addHandlerRender(controlGenreSearch);
+  resultsView.addHandlerClick(controlDetailsPageURL);
+
+  searchView.addHandlerSearchValue(controlKeywordSearchURL);
+  resultsView.addHandlerRender(controlKeywordSearch);
 };
 init();

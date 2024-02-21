@@ -189,7 +189,11 @@ export const loadMovieDetails = async function (id) {
 
     state.movie.topLevelDetails.push(dataTopLevel);
     state.movie.actors = dataActors;
-    state.movie.director = dataDirector.name;
+    if (dataDirector) {
+      state.movie.director = dataDirector.name;
+    } else {
+      state.movie.director = 'N.A';
+    }
     state.movie.videosKeys = movieVideos;
     state.movie.similarMovies = dataMovieSimilar.results.map(movie => {
       return {
@@ -206,7 +210,7 @@ export const loadMovieDetails = async function (id) {
   }
 };
 
-export const loadGenreSearchDetails = async function (query) {
+export const loadSearchDetails = async function (query) {
   try {
     if (!query) {
       return;

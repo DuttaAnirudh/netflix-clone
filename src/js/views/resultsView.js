@@ -11,7 +11,7 @@ export const renderSearchResults = async function (data) {
   const markupList = data.queryResultsList
     .map(movie => {
       if (movie.posterImg) {
-        return `<div class="grid__container">
+        return `<div class="grid__container" data-id="${movie.id}">
             <img
           src="${API_URL_BASE_IMAGE}${movie.posterImg}"
           alt="grid image"
@@ -45,9 +45,7 @@ export const renderSearchResults = async function (data) {
   const markup = `
   <section class="section-query-details mb-4">
   <p class="paragrapgh paragraph--red">Results for</p>
-  <p class="heading-primary heading-primary--bold">"${
-    data.queryString[0][0].toUpperCase() + data.queryString[0].slice(1)
-  }"</p>
+  <p class="heading-primary heading-primary--bold">"${data.queryString[0]}"</p>
 </section>
 
 <section class="section-results-list grid-list">
@@ -61,4 +59,22 @@ ${markupList}
 
 export const addHandlerRender = function (handler) {
   window.addEventListener('load', handler);
+};
+
+export const addHandlerClick = function (handler) {
+  const parentElement = document.getElementById('main-search');
+  if (!parentElement) {
+    return;
+  }
+
+  parentElement.addEventListener('click', function (e) {
+    const box = e.target.closest('.grid__container');
+
+    if (!box) {
+      return;
+    }
+
+    const movieID = box.dataset.id;
+    return handler(movieID);
+  });
 };
