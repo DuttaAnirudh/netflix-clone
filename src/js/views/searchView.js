@@ -1,11 +1,16 @@
-export const addHandlerSearchValue = function (handler) {
-  const form = document.getElementById('search-form');
+import View from './View.js';
 
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
+class SearchView extends View {
+  _form = document.getElementById('search-form');
 
-    const inputValue = document.getElementById('search-box').value;
-    console.log(inputValue);
-    return handler(inputValue);
-  });
-};
+  addHandlerSearchValue(handler) {
+    this._form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const inputValue = document.getElementById('search-box').value;
+      return handler(inputValue);
+    });
+  }
+}
+
+export default new SearchView();

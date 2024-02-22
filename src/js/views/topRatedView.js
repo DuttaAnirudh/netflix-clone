@@ -1,37 +1,31 @@
+import View from './View.js';
 import star from 'url:../../assets/star.png';
 import { API_URL_BASE_IMAGE } from '../config.js';
 
-const parentElement = document.getElementById('top-rated');
+class TopRatedView extends View {
+  _parentElement = document.getElementById('top-rated');
 
-export const addHandlerRender = function (handler) {
-  window.addEventListener('load', handler);
-};
-
-export const addHandlerClick = function (handler) {
-  if (!parentElement) {
-    return;
-  }
-
-  parentElement.addEventListener('click', function (e) {
-    const box = e.target.closest('.recommend__container');
-
-    if (!box) {
+  addHandlerClick(handler) {
+    if (!this._parentElement) {
       return;
     }
 
-    const movieID = box.dataset.id;
-    return handler(movieID);
-  });
-};
+    this._parentElement.addEventListener('click', function (e) {
+      const box = e.target.closest('.recommend__container');
 
-export const renderWeeklyTrending = function (data) {
-  if (!parentElement) {
-    return;
+      if (!box) {
+        return;
+      }
+
+      const movieID = box.dataset.id;
+      return handler(movieID);
+    });
   }
 
-  const markup = data
-    .map(movie => {
-      return `<div class="recommend__container" data-id="${movie.id}">
+  _generateMarkup() {
+    return this._data
+      .map(movie => {
+        return `<div class="recommend__container" data-id="${movie.id}">
     <img
       src="${API_URL_BASE_IMAGE}${movie.posterImg}"
       alt="recommend image"
@@ -54,9 +48,9 @@ export const renderWeeklyTrending = function (data) {
       </div>
     </div>
   </div>`;
-    })
-    .join('');
+      })
+      .join('');
+  }
+}
 
-  parentElement.innerHTML = '';
-  parentElement.insertAdjacentHTML('afterbegin', markup);
-};
+export default new TopRatedView();

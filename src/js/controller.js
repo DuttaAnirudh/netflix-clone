@@ -1,12 +1,12 @@
 import * as model from './model.js';
-import * as sidebarView from './views/sidebarView.js';
-import * as bannerSliderView from './views/bannerSliderView.js';
-import * as bannerBoxView from './views/bannerBoxView.js';
-import * as weeklyTrendingView from './views/weeklyTrendingView.js';
-import * as topRatedView from './views/topRatedView.js';
-import * as detailsView from './views/detailsView.js';
-import * as resultsView from './views/resultsView.js';
-import * as searchView from './views/searchView.js';
+import sidebarView from './views/sidebarView.js';
+import bannerSliderView from './views/bannerSliderView.js';
+import bannerBoxView from './views/bannerBoxView.js';
+import weeklyTrendingView from './views/weeklyTrendingView.js';
+import topRatedView from './views/topRatedView.js';
+import detailsView from './views/detailsView.js';
+import resultsView from './views/resultsView.js';
+import searchView from './views/searchView.js';
 
 // VARIABLES
 const searchBtn = document.querySelector('.search__icon');
@@ -40,7 +40,7 @@ sliders.forEach(slider => {
 const controlSidebar = async function () {
   try {
     await model.loadGenreList();
-    sidebarView.renderGenreList(model.state.list.genres);
+    sidebarView.render(model.state.list.genres);
   } catch (err) {
     console.error(err);
   }
@@ -54,7 +54,7 @@ const controlBanner = async function () {
     await model.loadBannerMovie();
     const bannerMovie =
       model.state.list.bannerMovie[model.state.list.bannerMovie.length - 1];
-    bannerBoxView.renderBannerBox(bannerMovie);
+    bannerBoxView.render(bannerMovie);
   } catch (err) {
     console.error(err);
   }
@@ -63,7 +63,7 @@ const controlBanner = async function () {
 const controlBannerSlider = async function () {
   try {
     await model.loadPopularMovies();
-    bannerSliderView.renderBannerSlider(model.state.list.popularMovies);
+    bannerSliderView.render(model.state.list.popularMovies);
   } catch (err) {
     console.error(err);
   }
@@ -74,10 +74,10 @@ const controlBannerOnCLick = async function (id) {
     await model.bannerMovieUpdate(id);
     const bannerMovie =
       model.state.list.bannerMovie[model.state.list.bannerMovie.length - 1];
-    bannerBoxView.renderBannerBox(bannerMovie);
+    bannerBoxView.render(bannerMovie);
 
     // Rendering Slider boxes with active status
-    bannerSliderView.renderBannerSlider(model.state.list.popularMovies);
+    bannerSliderView.render(model.state.list.popularMovies);
   } catch (err) {
     console.error(err);
   }
@@ -86,7 +86,7 @@ const controlBannerOnCLick = async function (id) {
 const controlWeeklyTrending = async function () {
   try {
     await model.loadWeeklyTrending();
-    weeklyTrendingView.renderWeeklyTrending(model.state.list.trendingList);
+    weeklyTrendingView.render(model.state.list.trendingList);
   } catch (err) {
     console.error(err);
   }
@@ -95,7 +95,7 @@ const controlWeeklyTrending = async function () {
 const controlTopRated = async function () {
   try {
     await model.loadTopRated();
-    topRatedView.renderWeeklyTrending(model.state.list.topRated);
+    topRatedView.render(model.state.list.topRated);
   } catch (err) {
     console.error(err);
   }
@@ -117,7 +117,7 @@ const controlMovieDetails = async function () {
     const id = urlParams.get('id');
 
     await model.loadMovieDetails(id);
-    detailsView.renderMovieDetails(model.state.movie);
+    detailsView.render(model.state.movie);
   } catch (err) {
     console.error(err);
   }
@@ -139,7 +139,7 @@ const controlGenreSearch = async function () {
     const query = urlParams.get('genre');
 
     await model.loadSearchDetails(query);
-    resultsView.renderSearchResults(model.state.query);
+    resultsView.render(model.state.query);
   } catch (err) {
     console.error(err);
   }
@@ -160,7 +160,7 @@ const controlKeywordSearch = async function () {
     const query = urlParams.get('search');
 
     await model.loadSearchDetails(query);
-    resultsView.renderSearchResults(model.state.query);
+    resultsView.render(model.state.query);
   } catch (err) {
     console.error(err);
   }
@@ -172,7 +172,7 @@ const init = function () {
   bannerBoxView.addHandlerRender(controlBanner);
   bannerSliderView.addHandlerRender(controlBannerSlider);
   weeklyTrendingView.addHandlerRender(controlWeeklyTrending);
-  weeklyTrendingView.addHandlerRender(controlTopRated);
+  topRatedView.addHandlerRender(controlTopRated);
 
   bannerBoxView.addHandlerUpdateBanner(controlBannerOnCLick);
 
