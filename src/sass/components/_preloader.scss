@@ -1,0 +1,12 @@
+.nfLoader {
+  position: absolute;
+  top: 15rem;
+  left: 50%;
+
+  &__img {
+    width: 6rem;
+    height: 6rem;
+    background-color: var(--clr-gray-dark-1);
+    animation: nfLoader-spin 1.1s linear infinite, 1 !important;
+  }
+}

@@ -1,3 +1,5 @@
+import spinner from 'url:../../assets/spinner.png';
+
 export default class View {
   _data;
 
@@ -13,16 +15,22 @@ export default class View {
   }
 
   _clear() {
+    if (!this._parentElement) {
+      return;
+    }
     this._parentElement.innerHTML = '';
   }
 
   renderSpinner() {
+    if (!this._parentElement) {
+      return;
+    }
+
     const markup = `
-    <div class="spinner">
-    <svg>
-    <use href="${icons}#icon-loader"></use>
-    </svg>
+    <div id="loader" class="nfLoader">
+    <img src="${spinner}" class="nfLoader__img"
     </div>`;
+
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }

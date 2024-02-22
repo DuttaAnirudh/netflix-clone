@@ -50,6 +50,7 @@ const controlSidebar = async function () {
 // BANNER
 const controlBanner = async function () {
   try {
+    bannerBoxView.renderSpinner();
     await model.loadPopularMovies();
     await model.loadBannerMovie();
     const bannerMovie =
@@ -111,6 +112,7 @@ const controlDetailsPageURL = async function (id) {
 
 const controlMovieDetails = async function () {
   try {
+    detailsView.renderSpinner();
     // Get the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     // Get the value of the 'data' parameter
@@ -133,6 +135,7 @@ const controlGenreSearchURL = async function (query) {
 
 const controlGenreSearch = async function () {
   try {
+    resultsView.renderSpinner();
     // Get the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     // Get the value of the 'data' parameter
@@ -155,6 +158,8 @@ const controlKeywordSearchURL = async function (query) {
 
 const controlKeywordSearch = async function () {
   try {
+    resultsView.renderSpinner();
+    // Get the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     // Get the value of the 'data' parameter
     const query = urlParams.get('search');
