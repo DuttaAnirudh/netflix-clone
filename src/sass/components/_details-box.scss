@@ -2,16 +2,36 @@
   &__poster {
     position: sticky;
     top: 4rem;
+
+    @media only screen and (max-width: $bp-800) {
+      position: relative;
+      top: 0;
+    }
   }
 
   &__img {
     width: 30rem;
     border-radius: 2rem;
+
+    @media only screen and (max-width: $bp-800) {
+      width: 30rem;
+    }
+
+    @media only screen and (max-width: $bp-600) {
+      width: 25rem;
+    }
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     max-width: 70%;
     overflow: hidden;
+
+    @media only screen and (max-width: $bp-800) {
+      max-width: 95%;
+    }
   }
 
   &__info {
@@ -20,6 +40,13 @@
     align-items: flex-start;
     gap: 2rem;
     width: 100%;
+
+    @media only screen and (max-width: $bp-800) {
+      & > :nth-child(-n + 3) {
+        align-self: center;
+        text-align: center;
+      }
+    }
   }
 
   &__stats {
@@ -49,13 +76,18 @@
 
 .trailer {
   &__card {
-    height: 25rem;
-    min-width: 45rem;
+    aspect-ratio: 16/9;
+    width: calc(100% - 4rem);
+    max-width: 50rem;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     background-color: var(--clr-gray-dark-1);
+
+    @media only screen and (max-width: $bp-500) {
+      max-width: 42rem;
+    }
   }
 
   &__background {

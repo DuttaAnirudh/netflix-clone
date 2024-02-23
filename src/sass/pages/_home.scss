@@ -3,6 +3,10 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 2rem;
+
+  @media only screen and (max-width: $bp-600) {
+    display: block;
+  }
 }
 
 .main {
@@ -23,13 +27,35 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  overflow: hidden;
+
+  @media only screen and (max-width: $bp-1000) {
+    margin-bottom: 2rem;
+  }
+
+  @media only screen and (max-width: $bp-600) {
+    height: 57vh;
+    padding: 0 2rem;
+    gap: 8rem;
+  }
 }
 
 .banner-slider {
   position: absolute;
-  bottom: 1rem;
-  right: 2rem;
+  bottom: -1rem;
+  right: 1rem;
   overflow: hidden;
+
+  @media only screen and (max-width: $bp-600) {
+    position: relative;
+    bottom: 0;
+    right: -1rem;
+    align-self: center;
+  }
+
+  @media only screen and (max-width: $bp-400) {
+    width: 90%;
+  }
 }
 
 .banner-row {
@@ -52,6 +78,10 @@
 // RECOMMENDED SECTION
 .section-recommend {
   max-width: 85vw;
+
+  @media only screen and (max-width: $bp-1000) {
+    max-width: 96vw;
+  }
 }
 
 .slider-row {
@@ -59,7 +89,7 @@
   align-items: center;
   justify-content: start;
   gap: 2rem;
-  max-width: 150rem;
+  max-width: 158rem;
   overflow: auto;
 
   &::-webkit-scrollbar {

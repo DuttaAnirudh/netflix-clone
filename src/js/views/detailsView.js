@@ -73,12 +73,10 @@ class DetailsView extends View {
           
           
         <div class="section-trailer">
-          <div class="trailer mb-4">
             <h2 class="heading-secondary mb-2">Trailers and Clips</h2>
             <div class="trailer-row slider-box" id="videos-row">
               ${this._generateMarkupTrailer()}
-            </div>
-          </div>
+        </div>
         </div>
         </div>`;
   }

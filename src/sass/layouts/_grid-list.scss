@@ -1,7 +1,8 @@
 .grid-list {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: space-evenly;
+  gap: 1.5rem 0.5rem;
   flex-wrap: wrap;
 }
 
@@ -12,11 +13,25 @@
     gap: 1rem;
     max-width: 20rem;
     cursor: pointer;
+
+    @media only screen and (max-width: $bp-600) {
+      max-width: 18rem;
+    }
+
+    @media only screen and (max-width: $bp-500) {
+      max-width: 16rem;
+    }
   }
 
   &__img {
     width: 100%;
     border-radius: 2rem;
+  }
+
+  &__info-box {
+    @media only screen and (max-width: $bp-600) {
+      display: none;
+    }
   }
 
   &__title {

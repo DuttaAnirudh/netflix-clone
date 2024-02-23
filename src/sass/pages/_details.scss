@@ -3,6 +3,20 @@
   align-items: flex-start;
   gap: 4rem;
   max-width: 85vw;
+
+  @media only screen and (max-width: $bp-1000) {
+    max-width: 96vw;
+  }
+
+  @media only screen and (max-width: $bp-800) {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.section-trailer {
+  align-self: flex-start;
 }
 
 .trailer-row {
