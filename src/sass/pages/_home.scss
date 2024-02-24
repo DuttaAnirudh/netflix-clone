@@ -35,9 +35,7 @@
   }
 
   @media only screen and (max-width: $bp-600) {
-    height: 57vh;
-    padding: 0 2rem;
-    gap: 8rem;
+    height: 70vh;
   }
 }
 
@@ -47,11 +45,15 @@
   right: 1rem;
   overflow: hidden;
 
+  @media only screen and (max-width: $bp-1000) {
+    bottom: -2rem;
+  }
+
   @media only screen and (max-width: $bp-600) {
-    position: relative;
     bottom: 0;
-    right: -1rem;
-    align-self: center;
+    left: 0;
+    max-width: 62%;
+    margin: 0 auto;
   }
 
   @media only screen and (max-width: $bp-400) {
