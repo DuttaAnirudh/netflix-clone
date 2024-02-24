@@ -1,5 +1,6 @@
 import * as model from './model.js';
 import sidebarView from './views/sidebarView.js';
+import menuView from './views/menuView.js';
 import bannerSliderView from './views/bannerSliderView.js';
 import bannerBoxView from './views/bannerBoxView.js';
 import weeklyTrendingView from './views/weeklyTrendingView.js';
@@ -12,6 +13,8 @@ import searchView from './views/searchView.js';
 const searchBtn = document.querySelector('.search__icon');
 const searchField = document.querySelector('.search__field');
 const sliders = document.querySelectorAll('.slider-box');
+const overlayBox = document.querySelector('.overlay');
+const navigationToggle = document.getElementById('navi-toggle');
 
 // EVENT LISTENERS
 // Focusing on search input field when clicking on search icon
@@ -35,12 +38,32 @@ sliders.forEach(slider => {
   });
 });
 
+// Adding Overlay if menu is open
+navigationToggle.addEventListener('click', function (e) {
+  if (navigationToggle.checked) {
+    overlayBox.classList.add('overlay--active');
+  } else {
+    overlayBox.classList.remove('overlay--active');
+  }
+});
+
 ///////////////////////
 // SIDEBAR
 const controlSidebar = async function () {
   try {
     await model.loadGenreList();
     sidebarView.render(model.state.list.genres);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+///////////////////////
+// NAVIGATON MENU
+const controlNavigationMenu = async function () {
+  try {
+    await model.loadGenreList();
+    menuView.render(model.state.list.genres);
   } catch (err) {
     console.error(err);
   }
@@ -174,6 +197,7 @@ const controlKeywordSearch = async function () {
 // INITIALIZE
 const init = function () {
   sidebarView.addHandlerRender(controlSidebar);
+  menuView.addHandlerRender(controlNavigationMenu);
   bannerBoxView.addHandlerRender(controlBanner);
   bannerSliderView.addHandlerRender(controlBannerSlider);
   weeklyTrendingView.addHandlerRender(controlWeeklyTrending);
@@ -189,6 +213,7 @@ const init = function () {
   detailsView.addHandlerRender(controlMovieDetails);
 
   sidebarView.addHandlerClick(controlGenreSearchURL);
+  menuView.addHandlerClick(controlGenreSearchURL);
 
   resultsView.addHandlerRender(controlGenreSearch);
   resultsView.addHandlerClick(controlDetailsPageURL);

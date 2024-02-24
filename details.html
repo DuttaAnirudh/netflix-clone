@@ -22,9 +22,37 @@
     <div class="container">
       <!-- HEADER -->
       <header class="header mb-4">
-        <a href="./index.html">
-          <img src="/src/assets/logo.svg" alt="Netflix Logo" class="logo" />
-        </a>
+        <div class="header__navigation">
+          <div class="navigation">
+            <input
+              type="checkbox"
+              id="navi-toggle"
+              class="navigation__checkbox"
+            />
+            <label for="navi-toggle" class="navigation__button">
+              <span class="navigation__icon">&nbsp;</span>
+            </label>
+
+            <nav class="navigation__nav">
+              <h3 class="heading-tertiary mb-2">Genre</h3>
+              <ul class="menu__list" id="menu-list-genre">
+                <!-- <li class="menu__item">
+                <a href="#" class="menu__link">Adventure</a>
+              </li>
+              <li class="menu__item">
+                <a href="#" class="menu__link">Fantasy</a>
+              </li>
+              <li class="menu__item">
+                <a href="#" class="menu__link">Animation</a>
+              </li> -->
+              </ul>
+            </nav>
+          </div>
+
+          <a href="./index.html">
+            <img src="/src/assets/logo.svg" alt="Netflix Logo" class="logo" />
+          </a>
+        </div>
 
         <div class="search__box">
           <form class="search__wrapper" id="search-form">
@@ -46,13 +74,16 @@
       </header>
 
       <div class="content">
+        <!-- OVERLAY -->
+        <div class="overlay"></div>
+
         <!-- SIDEBAR -->
         <aside class="sidebar">
           <!-- Genre -->
           <div class="sidebar__box">
             <h3 class="heading-tertiary mb-2">Genre</h3>
             <ul class="sidebar__list" id="sidebar-list-genre">
-              <li class="sidebar__item">
+              <!-- <li class="sidebar__item">
                 <a href="#" class="sidebar__link">Adventure</a>
               </li>
               <li class="sidebar__item">
@@ -60,7 +91,7 @@
               </li>
               <li class="sidebar__item">
                 <a href="#" class="sidebar__link">Animation</a>
-              </li>
+              </li> -->
             </ul>
           </div>
 
