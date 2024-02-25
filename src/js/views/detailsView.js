@@ -1,5 +1,6 @@
 import View from './View.js';
 import star from 'url:../../assets/star.png';
+import video from 'url:../../assets/video-bg-icon.png';
 import { API_URL_BASE_IMAGE } from '../config.js';
 
 class DetailsView extends View {
@@ -74,7 +75,7 @@ class DetailsView extends View {
           
         <div class="section-trailer">
             <h2 class="heading-secondary mb-2">Trailers and Clips</h2>
-            <div class="trailer-row slider-box" id="videos-row">
+            <div class="slider-box trailer-row " id="videos-row">
               ${this._generateMarkupTrailer()}
         </div>
         </div>

@@ -8,44 +8,8 @@ import topRatedView from './views/topRatedView.js';
 import detailsView from './views/detailsView.js';
 import resultsView from './views/resultsView.js';
 import searchView from './views/searchView.js';
-
-// VARIABLES
-const searchBtn = document.querySelector('.search__icon');
-const searchField = document.querySelector('.search__field');
-const sliders = document.querySelectorAll('.slider-box');
-const overlayBox = document.querySelector('.overlay');
-const navigationToggle = document.getElementById('navi-toggle');
-
-// EVENT LISTENERS
-// Focusing on search input field when clicking on search icon
-searchBtn.addEventListener('click', () => {
-  searchField.focus();
-});
-
-// Scrolling in X direction on mouse scroll
-sliders.forEach(slider => {
-  slider.addEventListener('wheel', function (e) {
-    // Determing scroll direction(1 = down | -1 = up)
-    const delta = Math.sign(e.deltaY);
-
-    // Controling the scroll speed
-    const scrollAmount = 25;
-
-    slider.scrollLeft += delta * scrollAmount;
-
-    // Prevent Default scrolling behavior
-    e.preventDefault();
-  });
-});
-
-// Adding Overlay if menu is open
-navigationToggle.addEventListener('click', function (e) {
-  if (navigationToggle.checked) {
-    overlayBox.classList.add('overlay--active');
-  } else {
-    overlayBox.classList.remove('overlay--active');
-  }
-});
+import navigationView from './views/navigationView.js';
+import sliderView from './views/sliderView.js';
 
 ///////////////////////
 // SIDEBAR
