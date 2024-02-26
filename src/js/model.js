@@ -10,6 +10,7 @@ import {
   fetchQueryDetails,
 } from './helpers.js';
 
+// STATE
 export const state = {
   list: {
     genres: [],
@@ -33,6 +34,7 @@ export const state = {
   },
 };
 
+// Fetch the list of genres and pushing to state
 export const loadGenreList = async function () {
   try {
     const data = await fetchGenreList();
@@ -50,6 +52,7 @@ export const loadGenreList = async function () {
   }
 };
 
+// To mutate the recieved object with new property names
 const createMovieObject = function (moviesArray) {
   const arr = moviesArray.map(movie => {
     return {
@@ -66,6 +69,7 @@ const createMovieObject = function (moviesArray) {
   return arr;
 };
 
+// Converts gerne id to genre names
 const convertGenreIDToName = function (data) {
   const genreMap = data.genres.reduce((acc, genre) => {
     acc[genre.id] = genre.genre;
@@ -77,6 +81,7 @@ const convertGenreIDToName = function (data) {
   });
 };
 
+// Fetch popular movies and push to the state
 export const loadPopularMovies = async function () {
   try {
     const data = await fetchPopularMovies();
@@ -92,6 +97,7 @@ export const loadPopularMovies = async function () {
   }
 };
 
+// Taking first element popularMovies array and pushing it bannerMovie array
 export const loadBannerMovie = async function () {
   try {
     const currentBannerMovie = state.list.popularMovies[0];
@@ -102,19 +108,20 @@ export const loadBannerMovie = async function () {
   }
 };
 
+// Finding a movie with a particular id in popularMovies array and pushing it bannerMovie array
 export const bannerMovieUpdate = async function (id) {
   try {
     const movie = state.list.popularMovies.filter(movie => movie.id === +id);
     state.list.bannerMovie.push(movie[0]);
 
-    if (state.list.bannerMovie.length > 1) {
-      state.list.bannerMovie.splice(0, state.list.bannerMovie.length - 1);
-    }
+    // Deleting the old movie from the bannerMovie array
+    state.list.bannerMovie.splice(0, 1);
   } catch (err) {
     throw err;
   }
 };
 
+// Fetch trending movies of the week data and push them to the state
 export const loadWeeklyTrending = async function () {
   try {
     const data = await fetchTrendingWeekly();
@@ -127,6 +134,7 @@ export const loadWeeklyTrending = async function () {
   }
 };
 
+// Fetch top rated movies data and push them to the state
 export const loadTopRated = async function () {
   try {
     const data = await fetchTopRated();
@@ -139,6 +147,7 @@ export const loadTopRated = async function () {
   }
 };
 
+// Fetch all the information of a movie with specific id and push it to the state
 export const loadMovieDetails = async function (id) {
   try {
     if (!id) {
@@ -210,6 +219,7 @@ export const loadMovieDetails = async function (id) {
   }
 };
 
+// Fetch movies list data for a query
 export const loadSearchDetails = async function (query) {
   try {
     if (!query) {
