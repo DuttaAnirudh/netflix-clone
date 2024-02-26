@@ -37,7 +37,6 @@ const controlNavigationMenu = async function () {
 // BANNER
 const controlBanner = async function () {
   try {
-    bannerBoxView.renderSpinner();
     await model.loadPopularMovies();
     await model.loadBannerMovie();
     const bannerMovie =

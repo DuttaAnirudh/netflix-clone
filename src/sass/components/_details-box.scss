@@ -39,7 +39,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
-    width: 100%;
+    max-width: 85rem;
 
     @media only screen and (max-width: $bp-800) {
       & > :nth-child(-n + 3) {
