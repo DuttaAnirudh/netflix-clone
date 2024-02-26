@@ -25,6 +25,12 @@
   gap: 2rem;
   max-width: 150rem;
   overflow: auto;
+  scrollbar-color: var(--clr-primary) var(--clr-gray-dark-1);
+  scrollbar-width: thin;
+
+  @media only screen and (max-width: $bp-1000) {
+    scrollbar-width: none;
+  }
 
   &::-webkit-scrollbar {
     transform: translateY(1rem);
