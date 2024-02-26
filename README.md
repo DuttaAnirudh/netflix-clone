@@ -1,6 +1,6 @@
 # Netflix Clone
 
-Netflix Clone is a web application inspired by the design and functionality of the Netflix website. It fetches movie data using the TMDB API and renders movie information on the website.[Live Demo](https://netflixclone-dutta.netlify.app/)
+Netflix Clone is a web application inspired by the design and functionality of the Netflix website. It fetches movie data using the TMDB API and renders movie information on the website. [Live Demo](https://netflixclone-dutta.netlify.app/)
 
 ![Netflix Clone User Interface](/src/assets/homepage.png 'Netflix Clone Interface')
 
@@ -19,10 +19,14 @@ The API used belongs to TMDB. You can visit their website [here](https://www.the
 
 - **Homepage (index.html)**: The homepage of the website.
 - **Details Page (details.html)**: Shows details about a movie, including trailers/clips and a list of similar movies.
-- **Results Page (results.html)**: Displays a list of movies based on keyword search or genre selection.
+- **Results Page (results-list.html)**: Displays a list of movies based on keyword search or genre selection.
 - **Genre List**: Allows users to search for movies by genre.
 - **MVC Architecture**: Utilizes Model-View-Controller architecture for organizing JavaScript files.
 - **Class-based Views**: View files are structured with classes, with private variables and functions.
+
+## Architecture
+
+![Netflix clone Architecture](/src/assets/netflixclone-architecture.drawio.png 'Netflix clone Architecture')
 
 ## Improvements
 
