@@ -1,6 +1,6 @@
 # Netflix Clone
 
-Netflix Clone is a web application inspired by the design and functionality of the Netflix website. It fetches movie data using the TMDB API and renders movie information on the website. [Live Demo](https://netflixclone-dutta.netlify.app/)
+Netflix Clone is a web application inspired by the design and functionality of the Netflix website. It fetches movie data using the TMDB API and renders movie information on the website. [Live Demo](https://nf-clone-dutta.netlify.app/)
 
 ![Netflix Clone User Interface](/src/assets/homepage.png 'Netflix Clone Interface')
 
