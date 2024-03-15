@@ -20,17 +20,6 @@ const controlSidebar = async function () {
 
     // Rendering genre list on the sidebar of the website
     sidebarView.render(model.state.list.genres);
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-///////////////////////
-// NAVIGATON MENU
-const controlNavigationMenu = async function () {
-  try {
-    // Fetching and waitimg for genre list data and pushing it to state
-    await model.loadGenreList();
 
     // Rendering genre list on the navigation hamburger menu of the website
     menuView.render(model.state.list.genres);
@@ -216,7 +205,6 @@ const controlKeywordSearch = async function () {
 // INITIALIZE
 const init = function () {
   sidebarView.addHandlerRender(controlSidebar);
-  menuView.addHandlerRender(controlNavigationMenu);
   bannerBoxView.addHandlerRender(controlBanner);
   bannerSliderView.addHandlerRender(controlBannerSlider);
   weeklyTrendingView.addHandlerRender(controlWeeklyTrending);
