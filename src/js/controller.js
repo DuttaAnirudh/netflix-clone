@@ -32,6 +32,9 @@ const controlSidebar = async function () {
 // BANNER
 const controlBanner = async function () {
   try {
+    // Fetching and waitimg for genre list data and pushing it to state
+    await model.loadGenreList();
+
     // Fetching popular movie data and pushing it to the state
     await model.loadPopularMovies();
 
