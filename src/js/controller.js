@@ -29,7 +29,7 @@ const controlSidebar = async function () {
 };
 
 ///////////////////////
-// BANNER
+// BANNER & BANNER SLIDER
 const controlBanner = async function () {
   try {
     // Fetching and waitimg for genre list data and pushing it to state
@@ -43,17 +43,6 @@ const controlBanner = async function () {
 
     // Rendering the first popular movie to the banner section when page loads
     bannerBoxView.render(model.state.list.bannerMovie[0]);
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-///////////////////////
-// BANNER SLIDER
-const controlBannerSlider = async function () {
-  try {
-    // Fetching popular movie data and pushing it to the state
-    await model.loadPopularMovies();
 
     // Rendering the popular movies to the banner slider
     bannerSliderView.render(model.state.list.popularMovies);
@@ -209,7 +198,6 @@ const controlKeywordSearch = async function () {
 const init = function () {
   sidebarView.addHandlerRender(controlSidebar);
   bannerBoxView.addHandlerRender(controlBanner);
-  bannerSliderView.addHandlerRender(controlBannerSlider);
   weeklyTrendingView.addHandlerRender(controlWeeklyTrending);
   topRatedView.addHandlerRender(controlTopRated);
 
